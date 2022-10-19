@@ -158,9 +158,7 @@ This source code is very similar to the one above. It takes in the user input as
 
 The Go programming language supports testing by having a similar testing format as Python has. You are able to create a test file with functions that start with test and have go run it when you run go test. You can also do python's parameterized testing by using table information and running that through a test function. While go does not have python's assert, you are able to write your test files through having actual and expected values and throwing an error if the two are not equal to each other.
 
-#### How does the Go programming langauge support performance benchmarking?
-
-TODO: Provide a one-paragraph response to this question, using source code as needed
+#### How does the Go programming language support performance benchmarking?
 
 The go programming language supports performance benchmarking through allowing you to write benchmarking test cases. These look pretty similar to a test case, but have a new syntax where you use a 'b' testing parameter instead of a 'f' testing function. This sends out the stats for the computer and says how long it took for the different input cases took to run if it is a table benchmark function. You can see an example of a tale benchmark function below:
 
@@ -186,11 +184,13 @@ func BenchmarkPrimeNumbersTable(b *testing.B) {
 }
 ```
 
+You can see how the inputs in the table variable are declared above the table benchmark function. These are fed into the function and are run inside of the function and printed out through the terminal to the user. The testing 'b' parameter runs both the output of the prime numbers function created in the main file as well as the results of the benchmark built in function.
+
 ## Project Reflection
 
 ### How do the programs that you implemented connect to the content in all of the recently covered modules?
 
-TODO: Provide a one-paragraph response that answers this question in your own words.
+The programs that I implemented connect to the content in the recently covered modules as we have talked about scheduling and address space recently, both of which deal directly with hardware. These also relate to memory, something we are directly checking through our benchmark code and something we are currently talking about in our class.
 
 ### What was the greatest challenge that you faced when completing this project? How did you resolve it?
 
