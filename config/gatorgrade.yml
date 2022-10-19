@@ -1,0 +1,232 @@
+setup: |
+  cd project/golang/intmin && make all
+  cd project/golang/primenum && make all
+  echo "Done installing project dependencies!"
+---
+
+# Reminder for ^^^:
+# All commands executed in the setup block are done in a
+# one-by-one fashion from the current working directory. This means
+# that there is no history associated with running the commands and
+# thus multiple commands must be run in a single chain.
+
+# perform checks on a file
+- project/golang/intmin/eval_intmin.go:
+    - description: Ensure that the eval_intmin.go file exists in correct directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for eval_intmin.go
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Declare the IntMin function inside of eval_intmin.go
+      check: MatchFileFragment
+      options:
+        fragment: func IntMin
+        count: 1
+        exact: true
+    - description: Declare the main function inside of eval_intmin.go
+      check: MatchFileFragment
+      options:
+        fragment: func main
+        count: 1
+        exact: true
+    - description: Use single-line comment character sequence in a Go program
+      check: MatchFileFragment
+      options:
+        fragment: //
+        count: 5
+        exact: false
+
+# perform checks on a file
+- project/golang/primenum/eval_primenum.go:
+    - description: Ensure that the eval_primenum.go file exists in correct directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for eval_intmin.go
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Declare the primeNumbers function inside of eval_primenum.go
+      check: MatchFileFragment
+      options:
+        fragment: func primeNumbers
+        count: 1
+        exact: true
+    - description: Declare the main function inside of eval_primenum.go
+      check: MatchFileFragment
+      options:
+        fragment: func main
+        count: 1
+        exact: true
+    - description: Use single-line comment character sequence in a Go program
+      check: MatchFileFragment
+      options:
+        fragment: //
+        count: 5
+        exact: false
+
+# perform checks on a file
+- project/golang/intmin/eval_intmin_test.go:
+    - description: Ensure that the eval_intmin_test.go file exists in correct directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for eval_intmin_test.go
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Declare a TestIntMinBasic function inside of eval_intmin_test.go
+      check: MatchFileFragment
+      options:
+        fragment: func TestIntMinBasic
+        count: 1
+        exact: true
+    - description: Declare a TestIntMinTableDriven function inside of eval_intmin_test.go
+      check: MatchFileFragment
+      options:
+        fragment: func TestIntMinTableDriven
+        count: 1
+        exact: true
+    - description: Do not declare the main function inside of eval_intmin_test.go
+      check: MatchFileFragment
+      options:
+        fragment: func main
+        count: 0
+        exact: true
+    - description: Use single-line comment character sequence in a Go program
+      check: MatchFileFragment
+      options:
+        fragment: //
+        count: 5
+        exact: false
+
+# perform checks on a file
+- project/golang/primenum/eval_primenum_test.go:
+    - description: Ensure that the eval_primenum_test.go file exists in correct directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for eval_primenum_test.go
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Declare a TestIntMinBasic function inside of eval_primenum_test.go
+      check: MatchFileFragment
+      options:
+        fragment: func TestPrimeNumBasic
+        count: 1
+        exact: true
+    - description: Declare a BenchmarkPrimeNumbers function inside of eval_primenum_test.go
+      check: MatchFileFragment
+      options:
+        fragment: func BenchmarkPrimeNumbers(
+        count: 1
+        exact: true
+    - description: Declare a BenchmarkPrimeNumbersTable function inside of eval_primenum_test.go
+      check: MatchFileFragment
+      options:
+        fragment: func BenchmarkPrimeNumbersTable
+        count: 1
+        exact: true
+    - description: Do not declare the main function inside of eval_primenum_test.go
+      check: MatchFileFragment
+      options:
+        fragment: func main
+        count: 0
+        exact: true
+    - description: Use single-line comment character sequence in a Go program
+      check: MatchFileFragment
+      options:
+        fragment: //
+        count: 5
+        exact: false
+
+# run a command
+- description: Use go fmt to confirm that eval_intmin.go is formatted correctly
+  command: output=$(go fmt project/golang/intmin/eval_intmin.go 2>&1) && test -z "$output"
+
+# run a command
+- description: Use go fmt to confirm that eval_intmin.go is formatted correctly
+  command: output=$(go fmt project/golang/intmin/eval_intmin_test.go 2>&1) && test -z "$output"
+
+# run a command
+- description: Use go fmt to confirm that eval_primenum.go is formatted correctly
+  command: output=$(go fmt project/golang/primenum/eval_primenum.go 2>&1) && test -z "$output"
+
+# run a command
+- description: Use go fmt to confirm that eval_primenum_test.go is formatted correctly
+  command: output=$(go fmt project/golang/primenum/eval_primenum_test.go 2>&1) && test -z "$output"
+
+# run the program and confirm correct number of lines in the output
+- description: Run the project/golang/intmin/bin/eval_intmin program and ensure that it yields one line of output
+  check: CountCommandOutput
+  options:
+    command: ./project/golang/intmin/bin/eval_intmin 10 5
+    count: 1
+    exact: true
+
+# run the program and confirm correct number of lines in the output
+- description: Run the project/golang/intmin/bin/eval_intmin program and ensure that it yields the minimum value
+  check: MatchCommandFragment
+  options:
+    command: ./project/golang/intmin/bin/eval_intmin 10 5
+    fragment: 5
+    count: 1
+
+# run the program and confirm correct number of lines in the output
+- description: Run the project/golang/primenum/bin/eval_primenum program and ensure that it yields one line of output
+  check: CountCommandOutput
+  options:
+    command: ./project/golang/primenum/bin/eval_primenum 22
+    count: 1
+    exact: true
+
+# run the program and confirm correct number of lines in the output
+- description: Run the project/golang/primenum/bin/eval_primenum program and ensure that it yields list of primes
+  check: MatchCommandFragment
+  options:
+    command: ./project/golang/primenum/bin/eval_primenum 22
+    fragment: "[2 3 5 7 11 13 17 19]"
+    count: 1
+    exact: true
+
+# perform checks on a file
+- writing/reflection.md:
+    - description: Ensure that the reflection.md file exists in the writing/ directory
+      check: ConfirmFileExists
+    - description: Complete all TODOs, remove the TODO markers, and rewrite comments for the reflection
+      check: MatchFileFragment
+      options:
+        fragment: TODO
+        count: 0
+        exact: true
+    - description: Delete the 'Add Your Name Here' prompt in the reflection file
+      check: MatchFileFragment
+      options:
+        fragment: "Add Your Name Here"
+        count: 0
+        exact: true
+    - description: Write a minimum of 750 meaningful words in the reflection
+      check: CountFileWords
+      options:
+        count: 750
+        exact: false
+    - check: CountMarkdownTags
+      options:
+        tag: heading
+        count: 15
+        exact: false
+    - check: CountMarkdownTags
+      options:
+        tag: code_block
+        count: 7
+        exact: false
+
+# count number of commits in the GitHub repository
+- description: Have at least a specific minimum number of 10 commits in repository
+  check: CountCommits
+  options:
+    count: 10
