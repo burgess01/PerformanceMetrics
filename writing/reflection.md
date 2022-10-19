@@ -12,6 +12,8 @@ publication of your own web site or in a journal about operating systems.
 
 #### Run the `eval_intmin` program with two integer inputs of `10` and `5`
 
+Results from running my program with the inputs 10 and 5:
+
 ```text
 command: 
 go run eval_intmin.go 10 5
@@ -21,6 +23,8 @@ Minimum Value: 5
 
 #### Run the `eval_primenum` program with the integer inputs of `22`
 
+Results from running my program with the input 22:
+
 ```text
 command: 
 go run eval_primenum.go 22
@@ -29,6 +33,8 @@ Prime numbers: [2 3 5 7 11 13 17 19]
 ```
 
 #### Run the benchmarks and test cases for the `eval_intmin` program without memory performance results
+
+Here are the benchmarks and results from running my test cases:
 
 ```text
 go test -bench=.
@@ -42,6 +48,8 @@ ok      eval_intmin     0.506s
 ```
 
 #### Run the benchmarks and test cases for the `eval_intmin` program with memory performance results
+
+Here are the benchmarks and results from running my test cases:
 
 ```text
 go test -bench=. -benchmem
@@ -91,10 +99,6 @@ ok      eval_primenum   10.567s
 ## Performance Evaluation
 
 ### Characterize the computer hardware and software that you used to conduct all of the performance benchmarks
-
-TODO: provide as many details as is possible, including information about the
-number of CPUs, number of CPU cores, the amount of physical memory and, if
-possible, details about, for instance, the CPU scheduler and the memory allocator.
 
 The computer hardware and software that I used to conduct all of my performance benchmarks:
 
