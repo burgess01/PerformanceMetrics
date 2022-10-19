@@ -1,10 +1,10 @@
 # File Manipulation
 
-TODO: Please remove and rewrite all of the TODO markers and the sentences in
+Please remove and rewrite all of the markers and the sentences in
 this document. Ultimately, you should have a professional report suitable for
 publication of your own web site or in a journal about operating systems.
 
-## Add Your Name Here
+## Katie Burgess
 
 ## Program Output
 
@@ -14,17 +14,17 @@ TODO: Use a fenced code block to provide the output for every one of these comma
 TODO: Make sure that you provide the specific command that you ran along with the output
 TODO: Make sure that the fenced code block designates the content as text.
 
-#### Run the `eval_intmin` program with two integer inputs of `10` and `5`:
+#### Run the `eval_intmin` program with two integer inputs of `10` and `5`
 
-#### Run the `eval_primenum` program with the integer inputs of `22`:
+#### Run the `eval_primenum` program with the integer inputs of `22`
 
-#### Run the benchmarks and test cases for the `eval_intmin` program without memory performance results:
+#### Run the benchmarks and test cases for the `eval_intmin` program without memory performance results
 
-#### Run the benchmarks and test cases for the `eval_intmin` program with memory performance results:
+#### Run the benchmarks and test cases for the `eval_intmin` program with memory performance results
 
-#### Run the benchmarks and test cases for the `eval_primenum` program without memory performance results:
+#### Run the benchmarks and test cases for the `eval_primenum` program without memory performance results
 
-#### Run the benchmarks and test cases for the `eval_primenum` program with memory performance results:
+#### Run the benchmarks and test cases for the `eval_primenum` program with memory performance results
 
 ## Performance Evaluation
 
@@ -34,7 +34,7 @@ TODO: provide as many details as is possible, including information about the
 number of CPUs, number of CPU cores, the amount of physical memory and, if
 possible, details about, for instance, the CPU scheduler and the memory allocator.
 
-### Identify and explain at least three performance trends that are evident in your data set.
+### Identify and explain at least three performance trends that are evident in your data set
 
 TODO: identify and explain the performance trends in the following subsections
 
