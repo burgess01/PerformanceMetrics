@@ -202,4 +202,4 @@ I used the resources listed on the top of all of the program files, as well as l
 
 ### What steps would you take if you were asked to re-implement this project in Python or C?
 
-If I was to re-implement this project in Python or C, I would use my same general format while changing syntax and the imports used. So, for example, I would write the same general test case format in python, but instead of using the table syntax in Go, I would change it out for the parameterized testing in pytest for Python.
+If I was to re-implement this project in Python or C, I would use my same general format while changing syntax and the imports used. So, for example, I would write the same general test case format in python, but instead of using the table syntax in Go, I would change it out for the parameterized testing in py test for Python.
