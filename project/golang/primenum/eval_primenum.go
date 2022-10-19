@@ -8,6 +8,7 @@ package main
 import "fmt"
 import "os"
 import "strconv"
+import "math"
 
 // declare the primeNumbers function
 func primeNumbers(inputNum int) []int {
@@ -15,10 +16,11 @@ func primeNumbers(inputNum int) []int {
 	// iterate through all of the numbers up to and including the input
 	for i := 2; i < inputNum; i++ {
 		prime := true
-		for j := 2; j < i; j++ {
+		for j := 2; j <= int(math.Sqrt(float64(i))); j++ {
 			// if the number is prime
 			if i%j == 0 {
 				prime = false
+				break
 			}
 		}
 		if prime == true {

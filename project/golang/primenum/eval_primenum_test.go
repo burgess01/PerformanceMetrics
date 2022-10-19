@@ -33,10 +33,10 @@ func BenchmarkPrimeNumbers(b *testing.B) {
 var table = []struct {
 	input int
 }{
-	{input: 100},
-	{input: 1000},
-	{input: 74382},
-	{input: 382399},
+	{input: 5},
+	{input: 10},
+	{input: 30},
+	{input: 22},
 }
 
 func BenchmarkPrimeNumbersTable(b *testing.B) {
