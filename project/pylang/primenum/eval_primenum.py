@@ -10,7 +10,6 @@ def primeNum(maxNum):
         prime = True
         for j in range(2, i):
             if i % j == 0:
-                print(j)
                 prime = False
                 break
         if prime == True:
@@ -21,7 +20,8 @@ def primeNum(maxNum):
 def main():
     max = int(sys.argv[1])
     results = primeNum(max)
-    print("Prime Numbers: ", results)
+    print("Prime Numbers:", results)
 
 
-main()
+if __name__ == "__main__":
+    main()

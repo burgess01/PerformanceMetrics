@@ -10,7 +10,7 @@ def test_primeNumBasic():
     assert ans == expected
 
 
-@pytest.mark.parameterize(
+@pytest.mark.parametrize(
     "maxNum, expected", [(2, [2]), (3, [2, 3]), (14, [2, 3, 5, 7, 11, 13])]
 )
 def test_multiplePrimeNum(maxNum, expected):
@@ -18,4 +18,11 @@ def test_multiplePrimeNum(maxNum, expected):
     assert ans == expected
 
 
-# TODO: add benchmarking
+# pytest benchmark functions
+def benchmarkFunc(option):
+    for i in range(20):
+        option(i)
+
+
+def test_intMinBenchmark(benchmark):
+    benchmark(benchmarkFunc, eval_primenum.primeNum)
