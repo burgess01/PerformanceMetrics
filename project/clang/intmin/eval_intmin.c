@@ -20,5 +20,5 @@ int main(int argc, char *argv[])
 
     int result = intMin(numOne, numTwo);
 
-    printf("Minimum Value:", result);
+    printf("Minimum Value: %d\n", result);
 }

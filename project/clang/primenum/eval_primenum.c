@@ -1,35 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 
-int primeNum(int max)
+int isPrime(int num)
 {
-    // create the outputlist
-    int outputList[max / 2];
-    int index = 0 for (int i = 2; i < max; i++)
+    int inum = sqrt(num), prime = true, count;
+
+    for (count = 2; count <= inum; count++)
     {
-        bool prime = true;
-        for (int j = 2; j < i; j++)
+        if (num % count == 0)
         {
-            if (i % j == 0)
-            {
-                prime = false;
-                break;
-            }
-            if (prime == true)
-            {
-                int outputList[index] = i;
-                index++;
-            }
+            prime = false;
+            break;
         }
     }
+    return prime;
 }
 
 int main(int argc, char *argv[])
 {
     int inputNum = atoi(argv[1]);
 
-    int result = primeNum(inputNum);
+    int numPrimes = 0;
 
-    printf("Prime Numbers:", result);
+    for (int i = 2; i < inputNum; i++)
+    {
+        if (isPrime(i) == true)
+        {
+            numPrimes++;
+        }
+    }
+    int primesList[numPrimes];
+    int index = 0;
+    for (int i = 2; i < (inputNum + 1); i++)
+    {
+        if (isPrime(i))
+        {
+            primesList[index] = i;
+            index++;
+        }
+    }
+
+    printf("Prime Numbers: ");
+    for (int j = 0; j < numPrimes + 1; j++)
+    {
+        printf("%d ", primesList[j]);
+    }
+    printf("\n");
 }
