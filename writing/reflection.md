@@ -12,7 +12,7 @@ publication of your own web site or in a journal about operating systems.
 
 #### Run the `eval_intmin` program with two integer inputs of `10` and `5`
 
-Results from running my program with the inputs 10 and 5:
+Results from running my intmin program with the inputs 10 and 5:
 
 ```text
 command: 
@@ -23,7 +23,7 @@ Minimum Value: 5
 
 #### Run the `eval_primenum` program with the integer inputs of `22`
 
-Results from running my program with the input 22:
+Results from running my primenum program with the input 22:
 
 ```text
 command: 
@@ -34,7 +34,7 @@ Prime numbers: [2 3 5 7 11 13 17 19]
 
 #### Run the benchmarks and test cases for the `eval_intmin` program without memory performance results
 
-Here are the benchmarks and results from running my test cases:
+Here are the benchmarks and results from running my test cases for intmin:
 
 ```text
 go test -bench=.
@@ -49,7 +49,7 @@ ok      eval_intmin     0.506s
 
 #### Run the benchmarks and test cases for the `eval_intmin` program with memory performance results
 
-Here are the benchmarks and results from running my test cases:
+Here are the benchmarks and results from running my test cases for intmin with memory performance results:
 
 ```text
 go test -bench=. -benchmem
@@ -109,19 +109,17 @@ cpu information: Intel (R) Core (TM) i5-8257U CPU is at 1.40GHz
 
 ### Identify and explain at least three performance trends that are evident in your data set
 
-TODO: identify and explain the performance trends in the following subsections
-
 #### Performance Trend One
 
-TODO: Provide at least one paragraph that identifies and explains a performance trend.
+In the primenum memory results, You can see that the number of allocs increased by one in order of size, while the number of B/op went up by x2 pretty evenly as well. It seems for this function that was fed into these tests that the amount of energy the program has to put in is exactly coorelated to the amount of work that the function has to do.
 
 #### Performance Trend Two
 
-TODO: Provide at least one paragraph that identifies and explains a performance trend.
+The evaluations with primenum seem to grow a bit faster than they do in primenum with memory information in terms of ns/op. It starts off smaller on the first operation, but by the largest one they are outgrowing the ones with memory information. I think that this might be due to the way they report their information, or maybe other information I was processing on my os at the same time, causing it to not be a one-to-one exact replication. Either way, I think it is interesting but for a more concrete answer I would probably have to run more experiments in a more controlled environment.
 
 #### Performance Trend Three
 
-TODO: Provide at least one paragraph that identifies and explains a performance trend.
+The evaluations calculated by intmin are a lot smaller than the ones done by primenum. This makes sense, as the calculations to find all the primes under a certain number are a lot more complicated than the easy logic done by intmin. Either way, seeing the -8 result of intmin be 0.27 while the -8 result of prime num be 443355 was a surprising trend to see.
 
 ## Source Code and Configuration Files
 
@@ -129,7 +127,13 @@ TODO: Provide at least one paragraph that identifies and explains a performance 
 
 #### What happens if you use `go build` and the program does not have a `main` function? Why?
 
-TODO: Provide the command output in a fenced code block and then explain it in detail
+```text
+Error: ./eval_intmin.go:28:1: syntax error: non-declaration statement outside function body
+make: *** [Makefile:14: eval_intmin] Error 2
+The set up command "cd project/golang/intmin && make all" failed.
+```
+
+If you do not have a main function you will get a syntax error saying that you did non-declarative statements outside of the function body. I got this error because I removed the main function syntax, but kept all of the code that I had inside of it. I did not know this before, that unlike in Python you cannot have non-declarative code outside of functions. I am sure if I removed all of the code along with the main function declaration and end statements that I would get another error. Like in Python, the fact that you need a main function is a very interesting and important thing to note when building programs. I think it is a useful addition to add, as it forces you to follow good programming practices.
 
 #### Go source code that provides the command-line interface for the `eval_intmin.go` program
 
