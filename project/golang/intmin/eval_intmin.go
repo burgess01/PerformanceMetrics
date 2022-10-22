@@ -23,7 +23,7 @@ func IntMin(numOne int, numTwo int) int {
 }
 
 // define main function
-main(){
+func main(){
 	// take in the two numbers from command line
 	// and assign them to variables
 	numOne, err := strconv.Atoi(os.Args[1])
