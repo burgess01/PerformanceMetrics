@@ -4,7 +4,7 @@
 // declare the package
 package main
 
-// TODO: import the required modules
+// import the required modules
 import "fmt"
 import "os"
 import "strconv"
